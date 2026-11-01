@@ -1,0 +1,11 @@
+$radius: 4px;
+
+.card {
+  &__title {
+    font-weight: 600;
+  }
+}
+
+.primary-card {
+  border-radius: $radius;
+}

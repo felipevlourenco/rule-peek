@@ -1,0 +1,96 @@
+{
+  "name": "rule-peek",
+  "displayName": "RulePeek",
+  "description": "Hover a CSS class in HTML, JSX, TSX, Vue or Svelte to see its CSS rules, with file and line.",
+  "version": "0.1.0",
+  "publisher": "felipelourenco",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Other"
+  ],
+  "keywords": [
+    "css",
+    "scss",
+    "less",
+    "hover",
+    "class",
+    "jsx",
+    "tailwind"
+  ],
+  "main": "./out/src/extension.js",
+  "activationEvents": [
+    "onLanguage:html",
+    "onLanguage:javascript",
+    "onLanguage:javascriptreact",
+    "onLanguage:typescript",
+    "onLanguage:typescriptreact",
+    "onLanguage:vue",
+    "onLanguage:svelte"
+  ],
+  "contributes": {
+    "configuration": {
+      "title": "RulePeek",
+      "properties": {
+        "cssClassHover.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show CSS rule definitions when hovering a class name."
+        },
+        "cssClassHover.include": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "**/*.{css,scss,less}"
+          ],
+          "description": "Glob patterns of stylesheets to index."
+        },
+        "cssClassHover.exclude": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "**/node_modules/**",
+            "**/dist/**",
+            "**/build/**",
+            "**/out/**",
+            "**/.next/**",
+            "**/.nuxt/**",
+            "**/.svelte-kit/**",
+            "**/coverage/**",
+            "**/.git/**"
+          ],
+          "description": "Glob patterns of stylesheets to skip. Avoid nested braces inside a single pattern."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p .",
+    "watch": "tsc -watch -p .",
+    "vscode:prepublish": "npm run compile",
+    "test:unit": "npm run compile && mocha out/test/suite/cssParser.test.js out/test/suite/classExtractor.test.js",
+    "test": "npm run compile && vscode-test"
+  },
+  "dependencies": {
+    "postcss": "^8.5.32",
+    "postcss-less": "^6.0.0",
+    "postcss-scss": "^4.0.9",
+    "postcss-selector-parser": "^7.1.7"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^20.19.43",
+    "@types/vscode": "~1.90.0",
+    "@vscode/test-cli": "^0.0.15",
+    "@vscode/test-electron": "^3.1.0",
+    "mocha": "^12.0.3",
+    "typescript": "^7.0.2"
+  }
+}
