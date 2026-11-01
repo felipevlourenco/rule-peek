@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6366f1"/>
+      <stop offset="1" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#0b1b5c" flood-opacity=".35"/>
+    </filter>
+  </defs>
+  <rect width="256" height="256" rx="56" fill="url(#bg)"/>
+  <!-- hovered class token -->
+  <rect x="44" y="178" width="132" height="34" rx="9" fill="#fff" fill-opacity=".22"/>
+  <rect x="60" y="191" width="100" height="8" rx="4" fill="#fff" fill-opacity=".85"/>
+  <!-- tooltip card -->
+  <g filter="url(#shadow)">
+    <rect x="36" y="34" width="184" height="116" rx="18" fill="#fff"/>
+    <path d="M70 148h30l-22 26z" fill="#fff"/>
+  </g>
+  <!-- selector -->
+  <circle cx="64" cy="64" r="6" fill="#4f46e5"/>
+  <rect x="78" y="58" width="52" height="12" rx="6" fill="#4f46e5"/>
+  <!-- declarations -->
+  <rect x="64" y="88" width="34" height="9" rx="4.5" fill="#94a3b8"/>
+  <rect x="106" y="88" width="62" height="9" rx="4.5" fill="#3b82f6"/>
+  <rect x="64" y="108" width="52" height="9" rx="4.5" fill="#94a3b8"/>
+  <rect x="124" y="108" width="40" height="9" rx="4.5" fill="#3b82f6"/>
+  <rect x="64" y="128" width="28" height="9" rx="4.5" fill="#94a3b8"/>
+  <rect x="100" y="128" width="72" height="9" rx="4.5" fill="#3b82f6"/>
+  <!-- pointer -->
+  <path d="M0 0v17l4.5-4 3 7 3-1.3-3-6.7H13z" transform="translate(150 184) scale(1.9)" fill="#fff" stroke="#0f172a" stroke-width="1.2" stroke-linejoin="round"/>
+</svg>

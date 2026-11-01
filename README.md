@@ -3,6 +3,8 @@
 Hover a CSS class name in your markup and see the CSS rules behind it — properties, selectors, media queries and the
 stylesheet location — in a native VS Code tooltip. No more jumping between components and stylesheets.
 
+![RulePeek showing the CSS behind a class on hover](images/hover.gif)
+
 ## Example
 
 ```tsx
@@ -50,7 +52,14 @@ With that CSS in `src/styles.css`, hovering `card` shows:
 > ```
 
 Each location is a link: click it to open the stylesheet at that line. When a class has more than 10 rules, the first
-10 are shown.
+10 are shown. VS Code caps hover height (about 250px), so a class with several rules scrolls: move the mouse onto the
+hover and scroll, or focus it from the keyboard with `Cmd/Ctrl+K Cmd/Ctrl+I`.
+
+### Live updates
+
+Edit or create a stylesheet and the hover reflects it as soon as the file is saved. No reload needed.
+
+![Editing a stylesheet and hovering again shows the new value](images/live-update.gif)
 
 ## Supported files
 

@@ -23,8 +23,6 @@ describe('extension', () => {
     const write = (text: string) => vscode.workspace.fs.writeFile(fixture(NEW_FILE), Buffer.from(text));
     await vscode.workspace.fs.writeFile(fixture('src/tmp-live.html'), Buffer.from(HTML));
     const hover = () => hoverText('src/tmp-live.html', 'fresh-class');
-    // The OS-level recursive watcher needs a moment after activation before it reports events.
-    await new Promise((r) => setTimeout(r, 1500));
 
     await write('.fresh-class { color: lime; }');
     await waitFor(async () => (await hover()).includes('color: lime;'));

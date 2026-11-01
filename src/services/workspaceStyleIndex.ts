@@ -43,10 +43,16 @@ export class WorkspaceStyleIndex implements vscode.Disposable {
     }
     for (const pattern of config.get<string[]>('include', [])) {
       const watcher = vscode.workspace.createFileSystemWatcher(pattern);
-      // Changes only touch files already indexed (so already past the exclude globs);
-      // creations go through a rescan, which applies include/exclude via findFiles.
-      watcher.onDidChange((uri) => this.files.has(uri.toString()) && this.enqueue(() => this.indexFile(uri)));
-      watcher.onDidCreate(() => this.scheduleSync());
+      // Saves often surface as `create` (replace-on-save), so an already-indexed file is re-parsed on either event.
+      // Genuinely new files go through a rescan, which applies include/exclude via findFiles; unknown files that
+      // merely change (excluded build output) are ignored.
+      const reindex = (uri: vscode.Uri): boolean => {
+        const known = this.files.has(uri.toString());
+        if (known) this.enqueue(() => this.indexFile(uri));
+        return known;
+      };
+      watcher.onDidChange((uri) => void reindex(uri));
+      watcher.onDidCreate((uri) => !reindex(uri) && this.scheduleSync());
       watcher.onDidDelete((uri) => this.enqueue(async () => this.remove(uri.toString())));
       this.watchers.push(watcher);
     }

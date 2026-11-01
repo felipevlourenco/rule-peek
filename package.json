@@ -2,9 +2,18 @@
   "name": "rule-peek",
   "displayName": "RulePeek",
   "description": "Hover a CSS class in HTML, JSX, TSX, Vue or Svelte to see its CSS rules, with file and line.",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "publisher": "felipelourenco",
+  "icon": "images/icon.png",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/felipevlourenco/rule-peek.git"
+  },
+  "homepage": "https://github.com/felipevlourenco/rule-peek#readme",
+  "bugs": {
+    "url": "https://github.com/felipevlourenco/rule-peek/issues"
+  },
   "engines": {
     "vscode": "^1.90.0"
   },
